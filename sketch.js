@@ -5,7 +5,7 @@ var jerry, jerryImg1,jerryImg2;
 
 function preload() {
     bg = loadImage("images/garden.png");
-    tomImg1= loadAnimation("images/tomOne.png");
+    tomImg1= loadAnimation("images/tom.png");
     tomImg2=loadAnimation("images/tomTwo.png","images/tomThree.png");
     together= loadAnimation("images/together.png");
     jerryImg1=loadAnimation("images/jerryOne.png")
@@ -16,7 +16,7 @@ function preload() {
 function setup(){
     canvas = createCanvas(1000,800);
 
-    tom = createSprite(900, 600);
+    tom = createSprite(870, 600);
     tom.addAnimation("tomSleeping", tomImg1);
     tom.scale = 0.2;
 
@@ -45,16 +45,14 @@ function draw() {
 
 
 function keyPressed(){
-    if(keyCode === 32){
 
+    if(keyCode === LEFT_ARROW){
+        tom.velocityX = -5; 
         tom.addAnimation("tomRunning", tomImg2);
         tom.changeAnimation("tomRunning");
         
         jerry.addAnimation("jerryTeasing", jerryImg2);
         jerry.frameDelay = 25;
         jerry.changeAnimation("jerryTeasing");
-    }
-    if(keyCode === LEFT_ARROW){
-        tom.velocityX = -5; 
     }
 }
